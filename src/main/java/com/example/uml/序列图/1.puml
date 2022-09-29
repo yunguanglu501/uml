@@ -4,9 +4,11 @@
 autonumber
 
 alt money>2500
+|||
 客户 -> 取款机: 取款请求
 activate 取款机 #FFBBBB
 取款机 --> 客户: 一次不能取太多
+||100||
 deactivate 取款机
 
 else money<=2500

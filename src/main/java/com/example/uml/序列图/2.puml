@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+loop 每周一
+员工 -> 主管: 汇报
+activate 主管 #FFBBBB
+主管 --> 员工: 工作安排
+deactivate
+end
+@enduml

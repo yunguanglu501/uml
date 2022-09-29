@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+skinparam sequenceMessageAlign true
+客人 -> 厨师: 点菜
+activate 厨师 #99FF99
+
+厨师 --> 客人: 上菜
+deactivate 厨师 #99FF99
+@enduml

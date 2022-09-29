@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+activate 用户 #99FF99
+用户 -> loginUserC: 1,请求登录,输入账号密码,验证码
+activate loginUserC #99FF99
+loginUserC -> loginUserC: 1.1,校验验证码是否输入正确
+loginUserC -> loginUserC: 1.2,校验账号密码是否为空
+alt  #99FF99 校验不通过
+loginUserC --> 用户: 2,返回登录界面,提示对应信息
+deactivate loginUserC
+else 校验通过
+loginUserC -> loginUserService: 3,传递账号密码
+activate loginUserService #99FF99
+end
+loginUserService -> loginUserService: 3.1,对账号密码加密
+loginUserService -> loginUserDao: 4,发送账户密码加密信息
+activate loginUserDao #99FF99
+loginUserDao -> DB: 5,查询用户登录信息
+activate DB #99FF99
+DB --> loginUserC: 6,返回登录信息
+deactivate loginUserService
+deactivate loginUserDao
+deactivate DB
+activate loginUserC #99FF99
+alt  #99FF99 登录成功
+loginUserC -> loginUserC: 6.1,写入session
+loginUserC --> 用户: 7,返回首页
+else 登录失败
+loginUserC --> 用户: 8,返回登录页面
+deactivate loginUserC
+end
+deactivate 用户
+@enduml

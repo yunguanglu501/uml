@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+autonumber
+DNS服务器 -> 浏览器: DNS查询
+浏览器 --> web服务器: TCP握手
+DNS服务器 -> 浏览器: Authentication Request
+浏览器 --> web服务器: Authentication Response
+DNS服务器 -> 浏览器: Authentication Request
+浏览器 --> web服务器: Authentication Response
+@enduml

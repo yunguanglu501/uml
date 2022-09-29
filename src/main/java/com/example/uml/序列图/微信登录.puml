@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+activate 微信客户端
+微信客户端 -> 商城系统: 登录
+activate 商城系统
+商城系统 -> 微信服务中心: 获取openID
+微信服务中心 --> 商城系统: 返回登录信息
+商城系统 --> 微信客户端: 登录成功,返回登录信息
+deactivate 商城系统
+微信客户端 -> 商城系统: 购买商品
+activate 商城系统
+商城系统 --> 微信客户端: 返回订单信息唤起支付
+'deactivate 商城系统
+deactivate 微信客户端
+@enduml
