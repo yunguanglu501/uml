@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+alt money>2500
+客户 -> 取款机: 取款请求
+activate 取款机 #FFBBBB
+取款机 --> 客户: 一次不能取太多
+deactivate 取款机
+
+else money<=2500
+客户 -> 取款机: 取款请求
+activate 取款机 #FFBBBB
+取款机 -> 银行: 取款请求
+activate 银行 #FFBBBB
+银行 --> 取款机: 请求结果
+deactivate 银行
+取款机 --> 客户: 请求结果
+deactivate 取款机
+end
+@enduml
